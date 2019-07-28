@@ -38,19 +38,18 @@ function concertThis(){
 function spotifyThis(){
     //grab song to search
     var songName = process.argv.slice(3).join(" ");
-    console.log(songName);
+    console.log("Searched: " + songName);
     //run the search
-    spotify.search({ type: 'track', query: songName}, function(err, data) {
+    spotify.search({ type: 'track', query: songName }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
-      console.log(data); 
+       //log Artist, Song Name, Preview Link, and Album the song is from
+        console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
+        console.log("Song: " + data.tracks.items[0].name);
+        console.log("Album: " + data.tracks.items[0].album.name);
+        console.log("Preview Link: " + data.tracks.items[0].preview_url);
       });
-    //log Artist, Song Name, Preview Link, and Album the song is from
-    // console.log("Artist: " + );
-    // console.log("Song: " + );
-    // console.log("Preview Link: " + ):
-    // console.log("Album: " + );
 }
 
 function movieThis(){
