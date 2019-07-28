@@ -1,6 +1,6 @@
 require("dotenv").config();
-
-var keys = require("./keys.js");
+var Spotify = require('node-spotify-api');
+var keys = require("./key");
 var moment = require('moment');
 var spotify = new Spotify(keys.spotify);
 
@@ -29,9 +29,9 @@ function concertThis(){
     //run the search
 
     //log the Artist, Venue, Date of event
-    console.log("Artist: " + );
-    console.log("Venue: " + );
-    console.log("Date: " + );
+    // console.log("Artist: " + );
+    // console.log("Venue: " + );
+    // console.log("Date: " + );
 }
 
 // Searches for songs on spotify
@@ -40,12 +40,17 @@ function spotifyThis(){
     var songName = process.argv.slice(3).join(" ");
     console.log(songName);
     //run the search
-
+    spotify.search({ type: 'track', query: songName}, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+      console.log(data); 
+      });
     //log Artist, Song Name, Preview Link, and Album the song is from
-    console.log("Artist: " + );
-    console.log("Song: " + );
-    console.log("Preview Link: " + ):
-    console.log("Album: " + );
+    // console.log("Artist: " + );
+    // console.log("Song: " + );
+    // console.log("Preview Link: " + ):
+    // console.log("Album: " + );
 }
 
 function movieThis(){
